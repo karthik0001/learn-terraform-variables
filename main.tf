@@ -37,7 +37,7 @@ module "vpc" {
 
   tags = {
     project     = "project-alpha",
-    environment = "prod"
+    environment = "uat"
   }
 }
 
@@ -45,7 +45,7 @@ module "app_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
   version = "3.17.0"
 
-  name        = "web-sg-project-alpha-prod"
+  name        = "web-sg-project-alpha-uat"
   description = "Security group for web-servers with HTTP ports open within VPC"
   vpc_id      = module.vpc.vpc_id
 
@@ -53,7 +53,7 @@ module "app_security_group" {
 
   tags = {
     project     = "project-alpha",
-    environment = "prod"
+    environment = "uat"
   }
 }
 
@@ -61,7 +61,7 @@ module "lb_security_group" {
   source  = "terraform-aws-modules/security-group/aws//modules/web"
   version = "3.17.0"
 
-  name        = "lb-sg-project-alpha-prod"
+  name        = "lb-sg-project-alpha-uat"
   description = "Security group for load balancer with HTTP ports open within VPC"
   vpc_id      = module.vpc.vpc_id
 
@@ -69,7 +69,7 @@ module "lb_security_group" {
 
   tags = {
     project     = "project-alpha",
-    environment = "prod"
+    environment = "uat"
   }
 }
 
@@ -83,7 +83,7 @@ module "elb_http" {
   version = "2.4.0"
 
   # Ensure load balancer name is unique
-  name = "lb-${random_string.lb_id.result}-project-alpha-prod"
+  name = "lb-${random_string.lb_id.result}-project-alpha-uat"
 
   internal = false
 
@@ -110,7 +110,7 @@ module "elb_http" {
 
   tags = {
     project     = "project-alpha",
-    environment = "prod"
+    environment = "uat"
   }
 }
 
@@ -124,6 +124,6 @@ module "ec2_instances" {
 
   tags = {
     project     = "project-alpha",
-    environment = "prod"
+    environment = "uat"
   }
 }
