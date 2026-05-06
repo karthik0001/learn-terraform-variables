@@ -82,7 +82,7 @@ module "elb_http" {
   source  = "terraform-aws-modules/elb/aws"
   version = "2.4.0"
 
-  # Ensure load balancer name is unique
+  # Ensure load balancer name is uniquee
   name = "lb-${random_string.lb_id.result}-project-alpha-development"
 
   internal  = false
